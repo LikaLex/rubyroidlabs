@@ -1,0 +1,10 @@
+- @page.each_slice(3) do |pages|
+  .row
+    - pages.each do |page|
+      .col-md-4
+        .page
+          .image_wrapper
+            = link_to page do
+              = image_tag page.image.url(:medium)
+          %h2= link_to page.title, page
+= will_paginate @page, renderer: BootstrapPagination::Rails, previous_label: 'Previous', next_label: 'Next', inner_window:1, outer_window:0

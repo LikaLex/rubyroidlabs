@@ -1,0 +1,24 @@
+= image_tag @page.image.url(:medium, class: 'page_image')
+%h1= @page.title
+%p= @page.description
+%p= @page.information
+%p Submitted by
+%p= @page.user.email
+
+#comments
+  %h2
+    = @page.comments.count
+    Comments
+  = render @page.comments
+
+  %h3 Reply to thread
+  = render "comments/form"
+
+  %br/
+  %hr/
+  %br/
+
+  = link_to "Edit", edit_page_path(@page), class: "button"
+  = link_to "Delete", page_path(@page), method: :delete, data: { confirm: "Are you sure you want to do this?" }, class: "button"
+  = link_to "Home", root_path
+
